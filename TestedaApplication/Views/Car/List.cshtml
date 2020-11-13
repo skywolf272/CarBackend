@@ -1,0 +1,29 @@
+﻿@using TestedaApplication.Data.Models
+@model IEnumerable<Car>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Suction";
+ }
+
+     <h2>Авто</h2>
+     <div class="container">
+         <div class="row row-cols-4">
+             @{
+                 foreach (var cara in Model)
+                 {
+                         @using (Html.BeginForm("CarDesc", "Car"))
+                         {
+                             <div class="col-xs-6">
+                                 <img class="img-thumbnail" src="@cara.Image" alt="@cara.Name" width="300px" />
+                                 <h3>@cara.Name</h3>
+                                 <p>@cara.ShortDescription</p>
+                                 <p>@cara.Price.ToString("c")</p>
+                                 @Html.ActionLink("Инфо", "CarDesc", new { id = cara.Id }, new { @class = "btn btn-outline-info" })
+                                 <input type="submit" class="btn btn-outline-info" name="action:ToFav" value="Добавить в избранное" />
+                             </div>
+                         }
+                 }
+             }
+             </div>
+     </div>

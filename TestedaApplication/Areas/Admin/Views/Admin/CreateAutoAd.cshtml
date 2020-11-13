@@ -1,0 +1,76 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TestedaApplication.Data.DataManager
+@{
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+
+<div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Добавление авто</h4>
+    <form class="needs-validation" asp-area="Admin" asp-controller="Admin" asp-action="CreateAutoAd" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Название</label>
+                <input name="name" type="text" class="form-control" required="">
+                <div class="invalid-feedback">
+                    Valid name is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Краткое описание</label>
+            <input name="shortDesc" type="text" class="form-control" required="">
+            <div class="invalid-feedback">
+                Your ShortDescription is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Полное описание</label>
+            <textarea name="wholeDesc" type="text" class="form-control" required=""></textarea>
+            <div class="invalid-feedback">
+                Please enter whole description.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Фотка</label>
+            <input name="img" accept="image/jpeg,image/png" type="file" class="form-control" id="Price" required="">
+            <div class="invalid-feedback">
+                Please paste photo.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Цена</label>
+            <input name="price" type="text" class="form-control" id="Price" required="">
+            <div class="invalid-feedback">
+                Please enter price.
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label>Количество образцов</label>
+            <input name="avail" type="text" class="form-control" required="">
+            <div class="invalid-feedback">
+                Available count required.
+            </div>
+        </div>
+
+        <select name="categoryName" class="form-control" id="Category" required="">
+            @{
+                var list_categories = Model.GetCategories();
+                foreach (var category in list_categories)
+                {
+                    <option>@category.Name</option>
+                }
+            }
+        </select>
+        <div class="invalid-feedback">
+            Available count required.
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Добавить</button>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+﻿@using TestedaApplication.Data.Models
+@model Car
+
+@{
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+
+<div class="container">
+    <p>@Model.Name</p>
+    <img class="img-thumbnail" src="@Model.Image" alt="@Model.Name" />
+    <p>@Model.WholeDescription</p>
+</div>

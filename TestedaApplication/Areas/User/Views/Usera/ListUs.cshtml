@@ -1,0 +1,28 @@
+﻿@using TestedaApplication.Data.Models
+@model IEnumerable<Car>
+
+@{
+    Layout = "~/Views/Shared/_LayoutUs.cshtml";
+}
+
+<h2>Авто</h2>
+<div class="container">
+    <div class="row row-cols-4">
+        @{
+            foreach (var cara in Model)
+            {
+                @using (Html.BeginForm("CarDescUs", "Usera"))
+                {
+                 <div class="col-xs-6">
+                     <img class="img-thumbnail" src="@cara.Image" alt="@cara.Name" width="300px" />
+                     <h3>@cara.Name</h3>
+                     <p>@cara.ShortDescription</p>
+                     <p>@cara.Price.ToString("c")</p>
+                      @Html.ActionLink("Инфо", "CarDescUs", new { id = cara.Id }, new { @class = "btn btn-outline-info" })
+                      @Html.ActionLink("Добавить в избранное", "ToFavouriteUs", new { idFav = cara.Id }, new { @class = "btn btn-outline-info" })
+                 </div>
+                }
+            }
+        }
+    </div>
+</div>

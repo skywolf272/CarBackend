@@ -1,0 +1,32 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using TestedaApplication.Data.Models
+@model IEnumerable<Car>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+    ViewBag.Title = "Admin";
+}
+
+<h2>Авто</h2>
+<div class="container">
+    <div class="row row-cols-4">
+        @{
+            foreach (var cara in Model)
+            {
+                @using (Html.BeginForm("ListAd", "Admin"))
+                {
+                    <div class="col-xs-6">
+                        <img class="img-thumbnail" src="@cara.Image" alt="@cara.Name" width="300px" />
+                        <h3>@cara.Name</h3>
+                        <p>@cara.ShortDescription</p>
+                        <p>@cara.Price.ToString("c")</p>
+                        @Html.ActionLink("Инфо", "CarDescAd", new { id = cara.Id }, new { @class = "btn btn-outline-info" })
+                        @Html.ActionLink("Удалить","DeleteCarAd", new { id_del = cara.Id }, new { @class = "btn btn-outline-info" })
+                        <input type="submit" class="btn btn-outline-info" value="Добавить в избранное" />
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

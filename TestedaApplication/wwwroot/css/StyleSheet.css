@@ -1,0 +1,20 @@
+﻿body {
+    background-color: antiquewhite;
+}
+div{
+    margin: 10px;
+}
+h2{
+    text-align: center;
+}
+nav.moveCent{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+hr {
+    width: 60%;
+    border: none; /* Убираем границу */
+    background-color: darkgrey; /* Цвет линии */
+    color: darkgrey; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+}
