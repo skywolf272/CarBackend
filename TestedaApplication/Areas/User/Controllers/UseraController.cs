@@ -6,7 +6,6 @@ using TestedaApplication.Data;
 using TestedaApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
 
 namespace TestedaApplication.Areas.Usera.Controllers
 {
@@ -17,14 +16,11 @@ namespace TestedaApplication.Areas.Usera.Controllers
         private readonly UserManager<IdentityUser> userManager;
         private string UserID_;
         private readonly DataManager dataManager;
-        private readonly ILogger<UseraController> _log;
-        public UseraController(AppDbContext context, UserManager<IdentityUser> _userManager, ILogger<UseraController> logger)
+        public UseraController(AppDbContext context, UserManager<IdentityUser> _userManager)
         {
             db = context;
             userManager = _userManager;
             dataManager = new DataManager(db);
-            _log = logger;
-            _log.LogInformation("UserControlled was administed.");
         }
 
         public IActionResult ListUs()
@@ -37,10 +33,9 @@ namespace TestedaApplication.Areas.Usera.Controllers
             return View(db.Cars.FirstOrDefault(x => x.Id == id));
         }
 
-        public IActionResult ToFavouriteUs(int idFav)
+        public IActionResult ToFavouriteUs(int idFav) //Плохой метод - переделать
         {
             UserID_ = userManager.GetUserId(User);
-            _log.LogInformation("FavouriteId = " + idFav.ToString() + "; UserID = " + UserID_);
             UserFavs favCar = new UserFavs()
             {
                 UserId = UserID_,
@@ -55,6 +50,21 @@ namespace TestedaApplication.Areas.Usera.Controllers
         {
             UserID_ = userManager.GetUserId(User);
             return View(dataManager.GetCarsFromFavourites(UserID_));
+        }
+
+        public IActionResult FavouriteDeleteUs(int favCarId) //Плохой метод - переделать
+        {
+            UserID_ = userManager.GetUserId(User);
+
+            db.Favourites.Remove(db.Favourites.FirstOrDefault( x => x.CarId == favCarId && x.UserId == UserID_) ); //Небезопасно но работает
+            db.SaveChanges();
+            return RedirectToAction("FavouritesUs", "Usera");
+        }
+
+        public IActionResult UserProfile()
+        {
+            UserID_ = userManager.GetUserId(User);
+            return View();
         }
     }
 }

@@ -18,7 +18,7 @@
                      <h3>@cara.Name</h3>
                      <p>@cara.ShortDescription</p>
                      <p>@cara.Price.ToString("c")</p>
-                      @Html.ActionLink("Инфо", "CarDescUs", new { id = cara.Id }, new { @class = "btn btn-outline-info" })
+                      @Html.ActionLink("Инфо", "CarDeskUs", new { id = cara.Id }, new { @class = "btn btn-outline-info" })
                       @Html.ActionLink("Добавить в избранное", "ToFavouriteUs", new { idFav = cara.Id }, new { @class = "btn btn-outline-info" })
                  </div>
                 }

@@ -165,3 +165,6 @@ C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\bin\Debug\ne
 C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\TestedaApplication.csproj.CoreCompileInputs.cache
 C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\TestedaApplication.MvcApplicationPartsAssemblyInfo.cache
 C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Usera\ToFavouriteUs.cshtml.g.cs
+C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\Razor\Views\Car\FindByName.cshtml.g.cs
+C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Usera\CarDeskUs.cshtml.g.cs
+C:\programming\c# ASP\Testion\TestedaApplication\TestedaApplication\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Usera\FavouriteDeleteUs.cshtml.g.cs

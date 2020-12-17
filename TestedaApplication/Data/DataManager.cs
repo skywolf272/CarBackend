@@ -25,13 +25,16 @@ namespace TestedaApplication.Data
         public List<Car> GetCarsFromFavourites(string _userID)
         {
             List<UserFavs> Favs = db.Favourites.Where(x => x.UserId == _userID).ToList();
-            Favs[0] = Favs[0];
-            List<Car> cars = new List<Car>();
-            for (int i = 0; i < Favs.Count(); i++)
+            if (Favs != null)
             {
-                cars.Add(db.Cars.FirstOrDefault(x => x.Id == Favs[i].CarId));
+                List<Car> cars = new List<Car>();
+                for (int i = 0; i < Favs.Count(); i++)
+                {
+                    cars.Add(db.Cars.FirstOrDefault(x => x.Id == Favs[i].CarId));
+                }
+                return cars;
             }
-            return cars;
+            return null;
         }
 
         public List<Category> GetCategories()
@@ -64,6 +67,11 @@ namespace TestedaApplication.Data
         {
             db.Cars.Add(_car);
             db.SaveChanges();
+        }
+
+        public void GetUser(string userID)
+        {
+            db.Users.FirstOrDefault(x => x.Id == userID);
         }
     }
 }

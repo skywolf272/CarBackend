@@ -33,7 +33,8 @@ namespace TestedaApplication.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginUser user, string ReturnUrl)
+        public async Task<IActionResult> Login(LoginUser user, string ReturnUrl
+            )
         {
             if(ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace TestedaApplication.Controllers
                     await signInManager.SignInAsync(user, false);
                     await userManager.AddToRoleAsync(user, "user");
                     db.SaveChanges();
-                    return RedirectToAction("List", "Usera");
+                    return RedirectToAction("List", "Car");
                 }
                 else
                 {

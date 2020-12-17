@@ -18,7 +18,7 @@ namespace TestedaApplication.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly AppDbContext db;
-        IWebHostEnvironment _appEnvironment;
+        IWebHostEnvironment _appEnvironment; //Принять объект картинки из формы
 
         private DataManager dataManager;
 
@@ -45,8 +45,9 @@ namespace TestedaApplication.Areas.Admin.Controllers
         {
             return View(dataManager);
         }
+
         [HttpPost]
-        public async Task<IActionResult> CreateAutoAd(string name, string shortDesc, string wholeDesc, IFormFile img, int price, int avail, string categoryName)
+        public async Task<IActionResult> CreateAutoAd(string name, string shortDesc, string wholeDesc, IFormFile img, int price, int avail, string categoryName) //Переписать под объект
         {
             string file_path = "/img/" + img.FileName;
             using (var fileStream = new FileStream(_appEnvironment.WebRootPath + file_path, FileMode.Create))

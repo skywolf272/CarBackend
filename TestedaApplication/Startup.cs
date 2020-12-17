@@ -30,7 +30,7 @@ namespace TestedaApplication
             services.AddDbContext<Data.AppDbContext>(options =>
                 options.UseSqlServer(Config.ConnectionString));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+            services.AddIdentity<IdentityUser, IdentityRole>( opts =>
             {
                 opts.User.RequireUniqueEmail = false;
                 opts.Password.RequireDigit = false;
@@ -39,7 +39,6 @@ namespace TestedaApplication
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-
 
             services.ConfigureApplicationCookie(optionsAuth =>
             {
